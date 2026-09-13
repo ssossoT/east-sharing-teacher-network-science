@@ -56,6 +56,16 @@ Vercel의 빌드 로그에 표시되는 소스와 GitHub의 최신 소스가 다
 4. Vercel **Settings → Git → Production Branch**가 방금 푸시한 브랜치와 같은지 확인합니다.
 5. Vercel **Deployments**에서 `e7ce12b` 이후 커밋을 선택해 배포합니다. 실패했던 과거 Deployment의 **Redeploy** 버튼은 과거 커밋을 그대로 다시 빌드하므로 사용하지 않습니다.
 
+### GitHub Pull requests에 `Revert` PR이 생겼을 때
+
+제목이 `Revert "..."`인 PR은 수정본이 아니라 기존 변경을 **되돌리는 PR**입니다. 이를 병합하면 애플리케이션 코드가 제거되거나 이전 오류 상태로 돌아갈 수 있습니다.
+
+1. `Revert "..."` 제목의 PR을 열고 **Close pull request**로 닫습니다. 병합하지 않습니다.
+2. 원래 기능 PR을 열어 **Commits** 탭에서 최신 수정 커밋이 포함됐는지 확인합니다.
+3. 최신 커밋이 없다면 수정한 로컬 브랜치를 GitHub에 push한 후, 해당 브랜치에서 기본 브랜치(`main`)를 대상으로 새 PR을 만듭니다.
+4. 빨간 `✕ 1/2` 표시는 두 개의 상태 검사 중 하나가 실패했다는 의미입니다. PR의 **Checks** 탭 또는 **Details**를 눌러 실패한 Vercel 검사에서 배포 대상 커밋 SHA를 확인합니다.
+5. 구문 수정 커밋 `e7ce12b`와 그 이후 커밋이 포함된 PR만 병합합니다. 병합 후 Vercel이 `main`의 새 커밋을 자동 배포하도록 합니다.
+
 ## 데이터와 보안 원칙
 
 - 가입자는 항상 `member`/`pending`으로 생성되며 클라이언트가 자신의 역할이나 승인 상태를 올릴 수 없습니다.
