@@ -12,10 +12,12 @@ export function AuthProvider({children}:{children:React.ReactNode}) {
   const [loading,setLoading]=useState(firebaseConfigured), [demo,setDemo]=useState(false);
   useEffect(()=>{
     if(!auth||!db){setLoading(false);return;}
-    return onAuthStateChanged(auth,async user=>{
+    const authInstance=auth;
+    const dbInstance=db;
+    return onAuthStateChanged(authInstance,async user=>{
       setFirebaseUser(user);
       if(!user){setProfile(null);setLoading(false);return;}
-      const ref=doc(db,"users",user.uid), snap=await getDoc(ref);
+      const ref=doc(dbInstance,"users",user.uid), snap=await getDoc(ref);
       if(!snap.exists()) await setDoc(ref,{uid:user.uid,email:user.email||"",displayName:user.displayName||"선생님",photoURL:user.photoURL||"",role:"member",approvalStatus:"pending",workspaceId,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),isDeleted:false});
       const fresh=await getDoc(ref); setProfile(fresh.data() as AppUser);setLoading(false);
     });
