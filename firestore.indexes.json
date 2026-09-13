@@ -1,6 +1,0 @@
-{"indexes":[
- {"collectionGroup":"meetings","queryScope":"COLLECTION","fields":[{"fieldPath":"workspaceId","order":"ASCENDING"},{"fieldPath":"yearId","order":"ASCENDING"},{"fieldPath":"isDeleted","order":"ASCENDING"},{"fieldPath":"updatedAt","order":"DESCENDING"}]},
- {"collectionGroup":"lessonCases","queryScope":"COLLECTION","fields":[{"fieldPath":"workspaceId","order":"ASCENDING"},{"fieldPath":"yearId","order":"ASCENDING"},{"fieldPath":"isDeleted","order":"ASCENDING"},{"fieldPath":"updatedAt","order":"DESCENDING"}]},
- {"collectionGroup":"reflections","queryScope":"COLLECTION","fields":[{"fieldPath":"workspaceId","order":"ASCENDING"},{"fieldPath":"yearId","order":"ASCENDING"},{"fieldPath":"isDeleted","order":"ASCENDING"},{"fieldPath":"updatedAt","order":"DESCENDING"}]},
- {"collectionGroup":"purchaseRequests","queryScope":"COLLECTION","fields":[{"fieldPath":"workspaceId","order":"ASCENDING"},{"fieldPath":"yearId","order":"ASCENDING"},{"fieldPath":"isDeleted","order":"ASCENDING"},{"fieldPath":"updatedAt","order":"DESCENDING"}]}
-],"fieldOverrides":[]}
