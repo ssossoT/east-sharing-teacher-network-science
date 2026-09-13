@@ -46,6 +46,16 @@ git push -u origin main
 5. 배포된 `프로젝트명.vercel.app` 도메인을 Firebase Console의 **Authentication → Settings → Authorized domains**에 추가합니다.
 6. 재배포 후 이름·비밀번호 로그인, 승인 대기, 관리자 승인, 작성/수정/조회 순으로 점검합니다.
 
+### Vercel이 이전 코드를 다시 빌드할 때
+
+Vercel의 빌드 로그에 표시되는 소스와 GitHub의 최신 소스가 다르면 캐시 문제가 아니라 **이전 Git 커밋을 재배포한 것**입니다. 이 저장소에서 관리자 패널 구문 오류가 수정된 최소 커밋은 `e7ce12b`입니다.
+
+1. 로컬에서 `git log -1 --oneline`을 실행해 현재 커밋을 확인합니다.
+2. `git push origin <현재-브랜치>`로 수정 커밋을 GitHub에 먼저 올립니다.
+3. GitHub의 `app/page.tsx`에서 `AdminPanel` 내부가 `const usersQuery = ...`와 별도의 `return onSnapshot(...)` 형태인지 확인합니다.
+4. Vercel **Settings → Git → Production Branch**가 방금 푸시한 브랜치와 같은지 확인합니다.
+5. Vercel **Deployments**에서 `e7ce12b` 이후 커밋을 선택해 배포합니다. 실패했던 과거 Deployment의 **Redeploy** 버튼은 과거 커밋을 그대로 다시 빌드하므로 사용하지 않습니다.
+
 ## 데이터와 보안 원칙
 
 - 가입자는 항상 `member`/`pending`으로 생성되며 클라이언트가 자신의 역할이나 승인 상태를 올릴 수 없습니다.
