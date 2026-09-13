@@ -57,6 +57,8 @@ Vercel 프로젝트 연결과 Firebase 연결은 서로 별개입니다. GitHub�
 5. 환경 변수는 이미 만들어진 배포에 반영되지 않습니다. 저장 후 Vercel에서 최신 커밋을 **Redeploy**합니다.
 6. 화면의 경고에는 누락된 설정 키가 직접 표시됩니다. 모든 키를 설정했는데도 경고가 보이면 변수 이름의 오탈자와 배포 Environment를 확인합니다.
 
+현재 `.env.example`에는 `extra-school-activity` Firebase 웹 앱의 공개 클라이언트 설정이 입력되어 있습니다. 로컬에서는 `cp .env.example .env.local`로 연결하고, Vercel에서는 파일을 업로드하는 대신 같은 값을 Environment Variables에 각각 등록하세요. Firebase 웹 API 키는 클라이언트 식별값이므로 데이터 권한은 API 키 비공개 여부가 아니라 이 저장소의 Firestore/Storage Rules와 사용자 승인 상태로 보호합니다.
+
 ### Vercel이 이전 코드를 다시 빌드할 때
 
 Vercel의 빌드 로그에 표시되는 소스와 GitHub의 최신 소스가 다르면 캐시 문제가 아니라 **이전 Git 커밋을 재배포한 것**입니다. 이 저장소에서 관리자 패널 구문 오류가 수정된 최소 커밋은 `e7ce12b`입니다.
